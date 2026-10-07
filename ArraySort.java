@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 public class ArraySort {
 
@@ -13,7 +14,7 @@ public class ArraySort {
         return array;
     }
 
-    public int[] bubleSort(int[] array) {
+    public int[] bubbleSort(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - 1 - i; j++) {
 
@@ -27,17 +28,37 @@ public class ArraySort {
         return array;
     }
 
-    public void printArray(int[] array) {
-        System.out.print("[");
+    public int[] insertionSort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int current = array[i];
+            int j = i - 1;
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
-
-            if (i < array.length - 1) {
-                System.out.print(",");
+            while (j >= 0 && array[j] > current) {
+                array[j + 1] = array[j];
+                j--;
             }
+            array[j + 1] = current;
         }
+        return array;
+    }
 
-        System.out.println("]");
+    public int[] selectionSort(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[minIndex] > array[j]) {
+                    minIndex = j;
+                }
+            }
+            int temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+        return array;
+    }
+
+    public void printArray(int[] array) {
+        System.out.println(Arrays.toString(array));
     }
 }
